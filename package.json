@@ -1,0 +1,31 @@
+{
+  "name": "canvas-senpai",
+  "version": "0.0.1",
+  "description": "Package that will let you do canvas stuff very easily 😄",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CTK-WARRIOR/canvas-senpai"
+  },
+  "keywords": [
+    "ctk",
+   "canvas",
+    "discord",
+    "welcome"
+  ],
+  "author": "ctk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CTK-WARRIOR/canvas-senpai/issues"
+  },
+  "homepage": "https://github.com/CTK-WARRIOR/canvas-senpai#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.0",
+    "canvas": "^2.6.1",
+    "jimp": "^0.14.0"
+  }
+}
