@@ -1,6 +1,6 @@
 const Canvas = require("canvas");
 const jimp = require("jimp");
-const gradians = require("../gradiants.json");
+const gradians = require("../gradients.json");
 class CanvasSenpai {
   async welcome(member, { link, gradiant, blur } = {}) {
     if (blur !== false) {
