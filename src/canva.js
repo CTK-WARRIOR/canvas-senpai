@@ -1,20 +1,20 @@
 const Canvas = require("canvas");
 const jimp = require("jimp");
-const gradians = require("../gradiants.json");
+const gradians = require("../gradients.json");
 class CanvasSenpai {
-  async welcome(member, { link, gradiant, blur } = {}) {
+  async welcome(member, { link, gradient, blur } = {}) {
     if (blur !== false) {
       blur = true;
     }
-    if (link && gradiant) {
-      return console.log("You can not use link and gradiant at a same time");
+    if (link && gradient) {
+      return console.log("You can not use link and gradient at a same time");
     }
 
     if (!link) {
-      if (gradiant) {
-        let color = gradians.find(x => x.name === gradiant.toLowerCase());
+      if (gradeant) {
+        let color = gradians.find(x => x.name === gradient.toLowerCase());
         if (!color) {
-          return console.log("Invalid Gradiant Color :v");
+          return console.log("Invalid Gradient Color :v");
         }
 
         link = color.link;
