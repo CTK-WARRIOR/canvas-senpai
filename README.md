@@ -50,9 +50,9 @@ let data = await canva.welcome(member, {options})
 ```js
  let data = await canva.welcome(member, { link: "https://wallpapercave.com/wp/wp5128415.jpg", blur: false }) //Disables The Blur
 ```
-**gradiant**: Add gradiant image as background image of welcome image || String
+**gradient**: Add gradient image as background image of welcome image || String
 ```js
- let data = await canva.welcome(member, { gradiant: "peakblue" })
+ let data = await canva.welcome(member, { gradient: "peakblue" })
  //GRADIANTS NAME - coldsky, peakblue, pinkman, aqua, darkness, angel
 ```
 
