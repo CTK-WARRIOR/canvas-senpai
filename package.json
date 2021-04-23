@@ -25,7 +25,6 @@
   "homepage": "https://github.com/CTK-WARRIOR/canvas-senpai#readme",
   "dependencies": {
     "canvas": "^2.6.1",
-    "discord.js": "^12.5.3",
     "fast-average-color-node": "^1.0.3",
     "jimp": "~0.14.0"
   }
