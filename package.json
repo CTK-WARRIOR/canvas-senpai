@@ -1,6 +1,6 @@
 {
   "name": "canvas-senpai",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "description": "Package that will let you do canvas stuff very easily 😄",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   },
   "keywords": [
     "ctk",
-   "canvas",
+    "canvas",
     "discord",
     "welcome"
   ],
@@ -24,8 +24,9 @@
   },
   "homepage": "https://github.com/CTK-WARRIOR/canvas-senpai#readme",
   "dependencies": {
-    "node-fetch": "^2.6.0",
     "canvas": "^2.6.1",
-    "jimp": "^0.14.0"
+    "discord.js": "^12.5.3",
+    "fast-average-color-node": "^1.0.3",
+    "jimp": "~0.14.0"
   }
 }
