@@ -101,7 +101,7 @@ class CanvasSenpai {
 
 
   async welcome(member, { link, gradiant, blur, block } = {}) {
-    blur !== false ? blue = true : blur
+    blur !== false ? blur = true : blur
 
     if (link && gradiant) {
       return console.log("You can not use link and gradiant at a same time");

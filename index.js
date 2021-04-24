@@ -17,3 +17,5 @@ Canvas.registerFont(__dirname + '/fonts/bold.ttf', {
 module.exports = {
   CanvasSenpai: require("./src/canva.js")
 }
+
+
