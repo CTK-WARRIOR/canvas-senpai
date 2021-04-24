@@ -135,7 +135,7 @@ client.on("message", async message => {
      {
       name: message.author.username,
       discriminator: message.author.discriminator,
-      avatar: message.author.displayAvatarURL({format: "png"})
+      avatar: message.author.displayAvatarURL({format: "png"}),
       rank: 1,
       xp: 8989,
       blur: false

@@ -2,7 +2,7 @@ const Canvas = require("canvas");
 const jimp = require("jimp");
 const { getAverageColor } =  require('fast-average-color-node');
 
-const gradians = require("../gradiants.json");
+const gradians = require("./gradiants.json");
 class CanvasSenpai {
 
 
@@ -28,7 +28,7 @@ class CanvasSenpai {
     if (!avatar) throw new Error("Avatar image url is not given")
     if (!rank) throw new Error("Rank is not given.")
     if (!xp) throw new Error("Xp is not given.")
-    let color = await getAverageColor(background ? background : "./images/erased.png")
+    let color = await getAverageColor(background ? background : __dirname  + "/images/erased.png")
     if(!color.hex) color = "black";
     else color = color;
   
@@ -37,13 +37,13 @@ class CanvasSenpai {
     const ctx = canvas.getContext('2d')
   
   if(blur) {
-    background = await jimp.read(background ? background : "./images/erased.png");
+    background = await jimp.read(background ? background :  __dirname  + "/images/erased.png");
     background.blur(5);
     let image = await background.getBufferAsync("image/png");
     image = await Canvas.loadImage(image);
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
   } else {
-    let image = await Canvas.loadImage(background ? background : "./images/erased.png");
+    let image = await Canvas.loadImage(background ? background : __dirname + "/images/erased.png");
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
   }
 
@@ -101,47 +101,58 @@ class CanvasSenpai {
 
 
   async welcome(member, { link, gradiant, blur, block } = {}) {
-    blur !== false ? blur = true : blur
+   blur !== false ? blur = true : blur
+
 
     if (link && gradiant) {
       return console.log("You can not use link and gradiant at a same time");
     }
 
-    if (gradiant && !link) {
-      let color = gradians.find(x => x.name === gradiant.toLowerCase());
-      if (!color) {
-        return console.log("Invalid Gradiant Color :v");
-      }
+    if (!link) {
+      if (gradiant) {
+        let color = gradians.find(x => x.name === gradiant.toLowerCase());
+        if (!color) {
+          return console.log("Invalid Gradiant Color :v");
+        }
 
-      link = color.link;
-    } else {
-      link = "https://coverfiles.alphacoders.com/470/47086.png";
+        link = color.link;
+      } else {
+        link = "https://coverfiles.alphacoders.com/470/47086.png";
+      }
     }
 
     const canvas = Canvas.createCanvas(700, 250);
     const ctx = canvas.getContext("2d");
+
     const font = 'Manrope';
-    let fixedbkg;
 
     if (blur) {
       const background = await jimp.read(link);
+
       background.blur(5);
+
       let mraw = await background.getBufferAsync("image/png");
-      fixedbkg = await Canvas.loadImage(mraw);
+
+      const fixedbkg = await Canvas.loadImage(mraw);
+
+      ctx.drawImage(fixedbkg, 0, 0, canvas.width, canvas.height);
     } else {
-      fixedbkg = await Canvas.loadImage(link);
+      const fixedbkg = await Canvas.loadImage(link);
+
+      ctx.drawImage(fixedbkg, 0, 0, canvas.width, canvas.height);
     }
 
-    ctx.drawImage(fixedbkg, 0, 0, canvas.width, canvas.height);
     ctx.strokeRect(0, 0, canvas.width, canvas.height);
-    
+
     if (block !== false) {
+
       let blurImage = await Canvas.loadImage(
         "https://cdn.discordapp.com/attachments/735118044145123348/735477847526998077/20200722_181613.png"
       );
+
+
       ctx.drawImage(blurImage, 0, 0, canvas.width, canvas.height);
     }
-
     let xname = member.user.username;
 
     ctx.font = `bold 36px ${font}`;
@@ -167,7 +178,9 @@ class CanvasSenpai {
     let raw = await image.getBufferAsync("image/png");
 
     const avatar = await Canvas.loadImage(raw);
+    // Draw a shape onto the main canvas
     ctx.drawImage(avatar, 72, 48, 150, 150);
+
     return canvas.toBuffer();
   }
 
@@ -234,16 +247,6 @@ class CanvasSenpai {
     const canvas = Canvas.createCanvas(700, 250);
     const ctx = canvas.getContext("2d");
 
-    Canvas.registerFont(__dirname + '/normal.ttf', {
-      family: 'Manrope',
-      weight: 'regular',
-      style: 'normal'
-    });
-    Canvas.registerFont(__dirname + '/bold.ttf', {
-      family: 'Manrope',
-      weight: 'bold',
-      style: 'normal'
-    });
     const background = await jimp.read(link);
     const font = 'Manrope';
     background.blur(5);
@@ -261,7 +264,7 @@ class CanvasSenpai {
         "https://cdn.discordapp.com/attachments/636154061724450826/738273549525057556/20200730_112506.png"
       );
 
-      ictx.drawImage(blurImage, 0, 0, canvas.width, canvas.height);
+      ctx.drawImage(blurImage, 0, 0, canvas.width, canvas.height);
     }
 
     let image = await jimp.read(avatar);
